@@ -67,6 +67,56 @@ export default function Lab1() {
                     <li>Animal Farm</li>
                 </ul>
             </div>
+
+            <div id={"wd-tables"}>
+                <h4>Table Tag</h4>
+
+                <table border={1} width={"100%"}> {/*Declares the table*/}
+                    <thead> {/*Declares the table heading section*/}
+                        <tr> {/*Declares the heading row*/}
+                            <th>Quiz</th> {/*Declares the heading for first col*/}
+                            <th>Topic</th> {/*Declares the heading for second col*/}
+                            <th>Date</th> {/*Declares the heading for third col*/}
+                            <th>Grade</th> {/*Declares the heading for fourth col*/}
+                        </tr>
+                    </thead>
+                    <tbody> {/*Declares the table's main content*/}
+                        <tr> {/*Declares the first row*/}
+                            <td>Q1</td> {/*Declares the first row, first col*/}
+                            <td>HTML</td> {/*Declares the first row, second col*/}
+                            <td>02/03/21</td> {/*Declares the first row, third col*/}
+                            <td>85</td> {/*Declares the first row, fourth col*/}
+                        </tr>
+                        <tr>
+                            <td>Q2</td>
+                            <td>CSS</td>
+                            <td>02/10/21</td>
+                            <td>90</td>
+                        </tr>
+                        <tr>
+                            <td>Q3</td>
+                            <td>JavaScript</td>
+                            <td>02/17/21</td>
+                            <td>95</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colSpan={3}>Average</td>
+                            <td>90</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div id={"wd-images"}>
+                <h4>Image Tags</h4>
+                Loading an image from the internet: <br/>
+                <img id={"wd-golden-retriever"} width={"400px"}
+                     src={"https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2021/09/22102506/Golden-Retriever-head-portrait-outdoors.jpg"}/>
+                <br/>
+                Loading a local image:
+            </div>
         </div>
     );
 }
