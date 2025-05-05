@@ -99,11 +99,53 @@ export default function Lab1() {
                             <td>02/17/21</td>
                             <td>95</td>
                         </tr>
+                        <tr>
+                            <td>Q4</td>
+                            <td>Ordered Lists</td>
+                            <td>02/20/21</td>
+                            <td>89</td>
+                        </tr>
+                        <tr>
+                            <td>Q5</td>
+                            <td>Make Pancakes</td>
+                            <td>03/05/21</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>Q6</td>
+                            <td>Favorite Books</td>
+                            <td>03/11/21</td>
+                            <td>98</td>
+                        </tr>
+                        <tr>
+                            <td>Q7</td>
+                            <td>Solar System-The Planets</td>
+                            <td>03/16/21</td>
+                            <td>77</td>
+                        </tr>
+                        <tr>
+                            <td>Q8</td>
+                            <td>Elementary Data Structures</td>
+                            <td>03/25/21</td>
+                            <td>91</td>
+                        </tr>
+                        <tr>
+                            <td>Q9</td>
+                            <td>Top 10 Ice Cream Flavors in the USA</td>
+                            <td>04/12/21</td>
+                            <td>86</td>
+                        </tr>
+                        <tr>
+                            <td>Q10</td>
+                            <td>Most Disliked Action Movie Characters</td>
+                            <td>04/24/21</td>
+                            <td>80</td>
+                        </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colSpan={3}>Average</td>
-                            <td>90</td>
+                            <td>89.1</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -111,11 +153,12 @@ export default function Lab1() {
 
             <div id={"wd-images"}>
                 <h4>Image Tags</h4>
-                Loading an image from the internet: <br/>
-                <img id={"wd-golden-retriever"} width={"400px"}
-                     src={"https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2021/09/22102506/Golden-Retriever-head-portrait-outdoors.jpg"}/>
+                Loading an image from the internet (and link to the website): <br/>
+                <a href={"https://www.akc.org/expert-advice/lifestyle/fun-facts-golden-retriever/"} target={"_blank"}>
+                    <img id={"wd-golden-retriever"} width={"400px"}
+                         src={"https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2021/09/22102506/Golden-Retriever-head-portrait-outdoors.jpg"}/>
+                </a>
                 <br/>
-                Loading a local image:
             </div>
         </div>
     );
