@@ -156,10 +156,32 @@ export default function Lab1() {
                 Loading an image from the internet (and link to the website): <br/>
                 <a href={"https://www.akc.org/expert-advice/lifestyle/fun-facts-golden-retriever/"} target={"_blank"}>
                     <img id={"wd-golden-retriever"} width={"400px"}
-                         src={"https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2021/09/22102506/Golden-Retriever-head-portrait-outdoors.jpg"}/>
+                         src={"https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2021/09/22102506/Golden-Retriever-head-portrait-outdoors.jpg"} alt={"Golden Retriever"}/>
                 </a>
                 <br/>
             </div>
+
+            <div id={"wd-forms"}>
+                <h4>Form Elements</h4>
+                <form id={"wd-text-fields"}>
+                    <h5>Text Fields</h5>
+                    <label htmlFor={"wd-text-field-username"}>Username:</label>
+                    <input placeholder={"jdoe"} id={"wd-text-field-username"}/> <br/>
+                    <label htmlFor={"wd-text-fields-password"}>Password:</label>
+                    <input type={"password"} value={"123@#$asd"} id={"wd-text-fields-password"}/> <br/>
+                    <label htmlFor={"wd-text-field-first-name"}>First Name:</label>
+                    <input type={"text"} title={"John"} id={"wd-text-field-first-name"}/> <br/>
+                    <label htmlFor={"wd-text-field-last-name"}>Last Name:</label>
+                    <input type={"text"} placeholder={"Doe"} value={"Wonderland"}
+                           title={"The last name"} id={"wd-text-field-last-name"}/>
+                </form>
+            </div>
+
+            <h5>Text Boxes</h5>
+            <label>Biography</label> <br/>
+            <textarea id={"wd-textarea"} cols={30} rows={10}>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto dolorum eaque hic in itaque molestias praesentium quod repellendus sint ullam. Adipisci aliquam corporis culpa debitis error iure nemo officiis quas.
+            </textarea>
         </div>
     );
 }
