@@ -158,7 +158,7 @@ export default function Lab1() {
                 <img id="wd-starship" width="400px" src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg"  alt={"Tesla Bot"}/>
                 <br />
                 Loading a local image:<br/>
-                <img id={"wd-starship"} src={"../images/teslabot.jpg"} width={"200px"}/>
+                <img id={"wd-starship"} src={"../images/teslabot.jpg"} width={"200px"} alt={"Tesla Bot"}/>
 
             </div>
 
@@ -183,6 +183,59 @@ export default function Lab1() {
             <textarea id={"wd-textarea"} cols={30} rows={10}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto dolorum eaque hic in itaque molestias praesentium quod repellendus sint ullam. Adipisci aliquam corporis culpa debitis error iure nemo officiis quas.
             </textarea>
+
+            <h5 id={"wd-buttons"}>Buttons</h5>
+            <button id={"wd-all-good"}
+                    onClick={()=> alert("Life is Good!")}
+                    type={"button"}>Hello World!</button>
+
+            <h5>File Upload</h5>
+            <input id={"wd-upload"} type={"file"}/>
+
+            <h5 id={"wd-radio-buttons"}>Radio Buttons</h5>
+            <label>Favorite movie genre:</label><br/>
+            <input type={"radio"} name={"radio-genre"} id={"wd-radio-comedy"}/>
+            <label htmlFor={"wd-radio-comedy"}>Comedy</label><br/>
+            <input type={"radio"} name={"radio-genre"} id={"wd-radio-drama"}/>
+            <label htmlFor={"wd-radio-drama"}>Drama</label><br/>
+            <input type={"radio"} name={"radio-genre"} id={"wd-radio-scifi"}/>
+            <label htmlFor={"wd-radio-scifi"}>Science Fiction</label><br/>
+            <input type={"radio"} name={"radio-genre"} id={"wd-radio-fantasy"}/>
+            <label htmlFor={"wd-radio-fantasy"}>Fantasy</label>
+
+            <h5 id={"wd-checkboxes"}>Checkboxes</h5>
+            <label>Favorite movie genre:</label><br/>
+            <input type={"checkbox"} name={"check-genre"} id={"wd-chkbox-comedy"}/>
+            <label htmlFor={"wd-chkbox-comedy"}>Comedy</label><br/>
+            <input type={"checkbox"} name={"check-genre"} id={"wd-chkbox-drama"}/>
+            <label htmlFor={"wd-chkbox-drama"}>Drama</label><br/>
+            <input type={"checkbox"} name={"check-genre"} id={"wd-chkbox-scifi"}/>
+            <label htmlFor={"wd-chkbox-scifi"}>Science Fiction</label><br/>
+            <label htmlFor={"wd-chkbox-fantasy"}>
+                <input type={"checkbox"} name={"check-genre"} id={"wd-chkbox-fantasy"}/>
+                Fantasy
+            </label>
+
+            <h4 id={"wd-dropdowns"}>Dropdowns</h4>
+            <h5>Select One</h5>
+            <label htmlFor={"wd-select-one-genre"}>Favorite movie genre:</label><br/>
+            <select id={"wd-select-one-genre"}>
+                <option value={"COMEDY"}>Comedy</option>
+                <option value={"DRAMA"}>Drama</option>
+                <option selected value={"SCIFI"}>Science Fiction</option>
+                <option value={"FANTASY"}>Fantasy</option>
+            </select>
+
+            <h5>Select Many</h5>
+            <label htmlFor={"wd-select-many-genre"}>Favorite movie genres:</label><br/>
+            <select id={"wd-select-many-genre"} multiple>
+                <option selected value={"COMEDY"}>Comedy</option>
+                <option value={"DRAMA"}>Drama</option>
+                <option selected value={"SCIFI"}>Science Fiction</option>
+                <option value={"FANTASY"}>Fantasy</option>
+            </select>
+
+
         </div>
     );
 }
