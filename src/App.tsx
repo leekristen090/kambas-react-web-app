@@ -3,12 +3,18 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 import Labs from "./Labs";
+import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
 
 export default function App() {
     return (
-        <div>
-            <Labs />
-        </div>
+        <HashRouter>
+            <div>
+                <Routes>
+                    <Route path={"/"} element={<Navigate to={"Labs"}/>}/>
+                    <Route path={"/Labs/*"} element={<Labs />}/>
+                </Routes>
+            </div>
+        </HashRouter>
     );
 }
 

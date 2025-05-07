@@ -252,6 +252,11 @@ export default function Lab1() {
             <label htmlFor={"wd-text-fields-dob"}>Date of Birth: </label>
             <input type={"date"} id={"wd-text-fields-dob"} placeholder={"2000-01-21"}/> <br/>
 
+            <h4>Anchor Tag</h4>
+            Please
+            <a href={"https://www.lipsum.com"} id={"wd-lipsum"} target={"_blank"}> click here </a>
+            to get dummy text.<br/>
+
         </div>
     );
 }
