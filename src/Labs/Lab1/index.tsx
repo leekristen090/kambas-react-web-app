@@ -228,13 +228,29 @@ export default function Lab1() {
 
             <h5>Select Many</h5>
             <label htmlFor={"wd-select-many-genre"}>Favorite movie genres:</label><br/>
-            <select id={"wd-select-many-genre"} multiple>
+            <select multiple id={"wd-select-many-genre"} >
                 <option selected value={"COMEDY"}>Comedy</option>
                 <option value={"DRAMA"}>Drama</option>
                 <option selected value={"SCIFI"}>Science Fiction</option>
                 <option value={"FANTASY"}>Fantasy</option>
             </select>
 
+            <h4>Other HTML field types</h4>
+            <label htmlFor={"wd-text-fields-email"}>Email: </label>
+            <input type={"email"} placeholder={"jdoe@somewhere.com"} id={"wd-text-fields-email"}/><br/>
+            <label htmlFor={"wd-text-fields-salary-start"}>Starting Salary: </label>
+            <input type={"number"}
+                   id={"wd-text-fields-salary-start"}
+                   placeholder={"1000"}
+                   value={"100000"}/> <br/>
+            <label htmlFor={"wd-text-fields-rating"}>Rating: </label>
+            <input type={"range"}
+                   id={"wd-text-fields-rating"}
+                   placeholder={"Doe"}
+                   max={"5"}
+                   value={"4"}/> <br/>
+            <label htmlFor={"wd-text-fields-dob"}>Date of Birth: </label>
+            <input type={"date"} id={"wd-text-fields-dob"} placeholder={"2000-01-21"}/> <br/>
 
         </div>
     );
