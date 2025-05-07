@@ -2,6 +2,7 @@ export default function Lab1() {
     return (
         <div id="wd-lab1">
             <h2>Lab 1</h2>
+            <h2>Debug for branch a1</h2>
             <h3>HTML Examples</h3>
             <div id={"wd-h-tag"}>
                 <h4>Heading Tags</h4>
@@ -153,12 +154,12 @@ export default function Lab1() {
 
             <div id={"wd-images"}>
                 <h4>Image Tags</h4>
-                Loading an image from the internet (and link to the website): <br/>
-                <a href={"https://www.akc.org/expert-advice/lifestyle/fun-facts-golden-retriever/"} target={"_blank"}>
-                    <img id={"wd-golden-retriever"} width={"400px"}
-                         src={"https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2021/09/22102506/Golden-Retriever-head-portrait-outdoors.jpg"} alt={"Golden Retriever"}/>
-                </a>
-                <br/>
+                Loading an image from the internet: <br/>
+                <img id="wd-starship" width="400px" src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg"  alt={"Tesla Bot"}/>
+                <br />
+                Loading a local image:<br/>
+                <img id={"wd-starship"} src={"../images/teslabot.jpg"} width={"200px"}/>
+
             </div>
 
             <div id={"wd-forms"}>
