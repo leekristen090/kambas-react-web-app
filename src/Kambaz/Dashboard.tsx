@@ -1,4 +1,5 @@
 import {Link} from "react-router";
+// add at least 7 courses
 
 export default function Dashboard() {
     return (
@@ -8,7 +9,7 @@ export default function Dashboard() {
             <div id={"wd-dashboard-courses"}>
                 <div className={"wd-dashboard-course"}>
                     <Link to={"/Kambaz/Courses/1234/Home"} className={"wd-dashboard-course-link"}>
-                        <img src={"/images/reactjs.jpg"} width={"200"}/>
+                        <img src={"/images/reactjs.jpg"} width={"200"} alt={"React JS"}/>
                         <div>
                             <h5>CS 1234 React JS</h5>
                             <p className={"wd-dashboard-course-title"}>Full Stack Software Developer</p>
@@ -18,7 +19,7 @@ export default function Dashboard() {
                 </div>
                 <div className={"wd-dashboard-course"}>
                     <Link to={"/Kambaz/Courses/1234/Home"} className={"wd-dashboard-course-link"}>
-                        <img src={"/images/reactjs.jpg"} width={"200"}/>
+                        <img src={"/images/reactjs.jpg"} width={"200"} alt={"React JS"}/>
                         <div>
                             <h5>CS 1234 React JS</h5>
                             <p className={"wd-dashboard-course-title"}>Full Stack Software Developer</p>
@@ -28,7 +29,7 @@ export default function Dashboard() {
                 </div>
                 <div className={"wd-dashboard-course"}>
                     <Link to={"/Kambaz/Courses/1234/Home"} className={"wd-dashboard-course-link"}>
-                        <img src={"/images/reactjs.jpg"} width={"200"}/>
+                        <img src={"/images/reactjs.jpg"} width={"200"} alt={"React JS"}/>
                         <div>
                             <h5>CS 1234 React JS</h5>
                             <p className={"wd-dashboard-course-title"}>Full Stack Software Developer</p>
