@@ -13,7 +13,7 @@ export default function AssignmentEditor() {
                         <label htmlFor={"wd-points"}>Points</label>
                     </td>
                     <td>
-                        <input id={"wd-points"} value={100} />
+                        <input type={"number"} id={"wd-points"} value={100} />
                     </td>
                 </tr>
 
@@ -75,7 +75,7 @@ export default function AssignmentEditor() {
                         <label htmlFor={"wd-due-date"}>Due </label>
                     </td>
                     <td>
-                        <input type={"date"} id={"wd-due-date"} placeholder={"2024-05-13"}/>
+                        <input type={"date"} id={"wd-due-date"} value={"2024-05-13"}/>
                     </td>
                 </tr>
                 <tr>
@@ -90,10 +90,10 @@ export default function AssignmentEditor() {
                 <tr>
                     <td></td>
                     <td align={"left"}>
-                        <input type={"date"} id={"wd-available-from"} />
+                        <input type={"date"} id={"wd-available-from"} value={"2025-05-05"} />
                     </td>
                     <td align={"left"}>
-                        <input type={"date"} id={"wd-available-until"} value={"2025-05-08"} />
+                        <input type={"date"} id={"wd-available-until"} value={"2025-05-13"} />
                     </td>
                 </tr>
             </table>
