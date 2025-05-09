@@ -13,7 +13,7 @@ export default function Dashboard() {
                         <div>
                             <h5>CS 1234 React JS</h5>
                             <p className={"wd-dashboard-course-title"}>Full Stack Software Developer</p>
-                            <button>Go</button>
+                            <button type={"button"}>Go</button>
                         </div>
                     </Link>
                 </div>
@@ -23,7 +23,7 @@ export default function Dashboard() {
                         <div>
                             <h5>CS 1234 React JS</h5>
                             <p className={"wd-dashboard-course-title"}>Full Stack Software Developer</p>
-                            <button>Go</button>
+                            <button type={"button"}>Go</button>
                         </div>
                     </Link>
                 </div>
@@ -33,7 +33,7 @@ export default function Dashboard() {
                         <div>
                             <h5>CS 1234 React JS</h5>
                             <p className={"wd-dashboard-course-title"}>Full Stack Software Developer</p>
-                            <button>Go</button>
+                            <button type={"button"}>Go</button>
                         </div>
                     </Link>
                 </div>

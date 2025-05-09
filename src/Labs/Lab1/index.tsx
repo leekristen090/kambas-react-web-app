@@ -2,6 +2,9 @@ export default function Lab1() {
     return (
         <div id="wd-lab1">
             <h2>Lab 1</h2>
+
+            <a href={"https://github.com/leekristen090/kambas-react-web-app/tree/a1"} target={"_blank"}>GitHub Branch a1</a>
+
             <h3>HTML Examples</h3>
             <div id={"wd-h-tag"}>
                 <h4>Heading Tags</h4>

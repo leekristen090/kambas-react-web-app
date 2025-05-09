@@ -8,6 +8,7 @@ export default function Labs() {
     return (
         <div style={{textAlign: "left"}}>
             <h1>Labs</h1>
+            <h2>Kristen Lee CS 5610 Summer 1</h2>
             <TOC/>
             <Routes>
                 <Route path={"/"} element={<Navigate to={"Lab1"} />} />
