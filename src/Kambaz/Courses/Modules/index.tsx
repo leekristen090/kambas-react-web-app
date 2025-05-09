@@ -2,12 +2,12 @@ export default function Modules() {
     return (
         <div>
             <div>
-                <button>Collapse All</button>
-                <button>View Progress</button>
+                <button type={"button"}>Collapse All</button>
+                <button type={"button"}>View Progress</button>
                 <select id={"wd-select-publish"}>
                     <option selected value={"PUBLISHALL"}>Publish All</option>
                 </select>
-                <button>+ Module</button>
+                <button type={"button"}>+ Module</button>
             </div>
             <ul id={"wd-modules"}>
                 <li className={"wd-module"}>

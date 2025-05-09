@@ -50,15 +50,15 @@ export default function AssignmentEditor() {
                         </select>
                         <br/><br/>
                         Online Entry Options<br/>
-                        <input type={"checkbox"} id={"wd-text-entry"} name={"chkbox-text-entry"}/>
+                        <input type={"checkbox"} id={"wd-text-entry"} name={"chkbox-submission-type"}/>
                         <label htmlFor={"wd-text-entry"}>Text Entry</label><br/>
-                        <input type={"checkbox"} id={"wd-website-url"} name={"chkbox-website-url"}/>
+                        <input type={"checkbox"} id={"wd-website-url"} name={"chkbox-submission-type"}/>
                         <label htmlFor={"wd-website-url"}>Website Url</label><br/>
-                        <input type={"checkbox"} id={"wd-media-recordings"} name={"chkbox-media-recordings"} />
+                        <input type={"checkbox"} id={"wd-media-recordings"} name={"chkbox-submission-type"} />
                         <label htmlFor={"wd-media-recordings"}>Media Recordings</label><br/>
-                        <input type={"checkbox"} id={"wd-student-annotation"} name={"chkbox-student-annotation"}/>
+                        <input type={"checkbox"} id={"wd-student-annotation"} name={"chkbox-submission-type"}/>
                         <label htmlFor={"wd-student-annotation"}>Student Annotation</label><br/>
-                        <input type={"checkbox"} id={"wd-file-upload"} name={"chkbox-file-upload"} />
+                        <input type={"checkbox"} id={"wd-file-upload"} name={"chkbox-submission-type"} />
                         <label htmlFor={"wd-file-upload"}>File Upload</label>
                     </td>
                 </tr>
@@ -101,8 +101,8 @@ export default function AssignmentEditor() {
             <table>
                 <tr>
                     <td align={"right"}>
-                        <button>Cancel</button>
-                        <button>Save</button>
+                        <button type={"button"}>Cancel</button>
+                        <button type={"button"}>Save</button>
                     </td>
                 </tr>
             </table>
