@@ -93,7 +93,7 @@ export default function AssignmentEditor() {
                         <input type={"date"} id={"wd-available-from"} />
                     </td>
                     <td align={"left"}>
-                        <input type={"date"} id={"wd-available-until"} />
+                        <input type={"date"} id={"wd-available-until"} value={"2025-05-08"} />
                     </td>
                 </tr>
             </table>
