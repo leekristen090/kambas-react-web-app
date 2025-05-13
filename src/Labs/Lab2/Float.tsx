@@ -21,6 +21,14 @@ export default function Float() {
 
                 <div className={"wd-float-done"}></div>
             </div>
+
+            <div>
+                <div className={"wd-float-left2 wd-dimension-portrait wd-bg-color-yellow"}>Yellow</div>
+                <div className={"wd-float-left2 wd-dimension-portrait wd-bg-color-blue wd-fg-color-white"}>Blue</div>
+                <div className={"wd-float-left2 wd-dimension-portrait wd-bg-color-red"}>Red</div>
+                <img className={"wd-float-right2"} src={"https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg"} alt={"star ship"}/>
+                <div className={"wd-float-done2"}></div>
+            </div>
         </div>
     );
 }
