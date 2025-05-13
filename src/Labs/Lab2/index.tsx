@@ -11,6 +11,7 @@ import Zindex from "./Zindex.tsx";
 import Float from "./Float.tsx";
 import GridLayout from "./GridLayout.tsx";
 import Flex from "./Flex.tsx";
+import ReactIcons from "./ReactIcons.tsx";
 
 export default function Lab2() {
     return (
@@ -65,6 +66,7 @@ export default function Lab2() {
             <Float />
             <GridLayout />
             <Flex />
+            <ReactIcons />
 
         </div>
 
