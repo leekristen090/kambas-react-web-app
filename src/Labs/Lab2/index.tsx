@@ -1,4 +1,14 @@
 import "./index.css";
+import ForegroundColors from "./ForegroundColors.tsx";
+import BackgroundColors from "./BackgroundColors.tsx";
+import Borders from "./Borders.tsx";
+import Padding from "./Padding.tsx";
+import Margins from "./Margins.tsx";
+import Corners from "./Corners.tsx";
+import Dimensions from "./Dimensions.tsx";
+import Positions from "./Positions.tsx";
+import Zindex from "./Zindex.tsx";
+import Float from "./Float.tsx";
 
 export default function Lab2() {
     return (
@@ -40,6 +50,17 @@ export default function Lab2() {
                     </div>
                 </div>
             </div>
+
+            <ForegroundColors />
+            <BackgroundColors />
+            <Borders />
+            <Padding />
+            <Margins />
+            <Corners />
+            <Dimensions />
+            <Positions />
+            <Zindex />
+            <Float />
 
         </div>
 
