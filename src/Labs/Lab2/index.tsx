@@ -15,6 +15,8 @@ import ReactIcons from "./ReactIcons.tsx";
 import {Container} from "react-bootstrap";
 import BootstrapGrids from "./BootstrapGrids.tsx";
 import ScreenSizeLabel from "./ScreenSizeLabel.tsx";
+import BootstrapTables from "./BootstrapTables.tsx";
+import BootstrapLists from "./BootstrapLists.tsx";
 
 export default function Lab2() {
     return (
@@ -73,6 +75,8 @@ export default function Lab2() {
             <ReactIcons />
             <BootstrapGrids />
             <ScreenSizeLabel />
+            <BootstrapTables />
+            <BootstrapLists />
 
         {/*</div>*/}
         </Container>
