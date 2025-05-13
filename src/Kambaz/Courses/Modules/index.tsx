@@ -58,7 +58,62 @@ export default function Modules() {
                     </ul>
                 </li>
                 <li className={"wd-module"}>
-                    <div className={"wd-title"}>Week 2</div>
+                    <div className={"wd-title"}>Week 2, Lecture 1 - Web Styling with CSS</div>
+                    <ul className={"wd-lessons"}>
+                        <li className={"wd-lesson"}>
+                            <span>LEARNING OBJCTIVES</span>
+                            <ul className={"wd-content"}>
+                                <li className={"wd-content-item"}>Introduction to CSS</li>
+                                <li className={"wd-content-item"}>Selectors by class ID</li>
+                                <li className={"wd-content-item"}>Styling color and background color</li>
+                            </ul>
+                        </li>
+                        <li className={"wd-lesson"}>
+                            <span>READING</span>
+                            <ul className={"wd-content"}>
+                                <li className={"wd-content-item"}>Full Stack Developer - Chapter 3 - Styling Webpages with CSS</li>
+                            </ul>
+                        </li>
+                        <li className={"wd-lesson"}>
+                            <span>SLIDES</span>
+                            <ul className={"wd-content"}>
+                                <li className={"wd-content-item"}>Introduction to Cascading Style Sheets</li>
+                                <li className={"wd-content-item"}>Styling color</li>
+                                <li className={"wd-content-item"}>The box model</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li className={"wd-module"}>
+                    <div className={"wd-title"}>Week 2, Lecture 2 - CSS (Cont.) and Bootstrap</div>
+                    <ul className={"wd-lessons"}>
+                        <li className={"wd-lesson"}>
+                            <span>LEARNING OBJCTIVES</span>
+                            <ul className={"wd-content"}>
+                                <li className={"wd-content-item"}>Styling color and background</li>
+                                <li className={"wd-content-item"}>Styling dimensions and positions</li>
+                                <li className={"wd-content-item"}>The Box Model</li>
+                            </ul>
+                        </li>
+                        <li className={"wd-lesson"}>
+                            <span>READING</span>
+                            <ul className={"wd-content"}>
+                                <li className={"wd-content-item"}>Full Stack Developer - Chapter 3 - Styling Webpages with CSS</li>
+                            </ul>
+                        </li>
+                        <li className={"wd-lesson"}>
+                            <span>SLIDES</span>
+                            <ul className={"wd-content"}>
+                                <li className={"wd-content-item"}>Size & Position</li>
+                                <li className={"wd-content-item"}>Float</li>
+                                <li className={"wd-content-item"}>Flex</li>
+                                <li className={"wd-content-item"}>Rotating content and gradient background</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li className={"wd-module"}>
+                    <div className={"wd-title"}>Week 3</div>
                 </li>
             </ul>
         </div>
