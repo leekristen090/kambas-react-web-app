@@ -1,8 +1,8 @@
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 
 export default function BootstrapGrids() {
     return (
-        <Container>
+        <div>
             <h2>BootStrap</h2>
             <div id={"wd-bs-grid-system"}>
                 <h2>Grid Systems</h2>
@@ -94,6 +94,6 @@ export default function BootstrapGrids() {
                      </Col>
                  </Row>
             </div>
-        </Container>
+        </div>
     );
 }
