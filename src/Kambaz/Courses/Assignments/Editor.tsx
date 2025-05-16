@@ -16,11 +16,25 @@ export default function AssignmentEditor() {
                 <FormLabel>Assignment Name</FormLabel>
                 <FormControl type={"textarea"} value={"A1 - ENV + HTML"}/>
             </FormGroup>
-            <FormGroup>
-                <FormControl as={"textarea"} rows={8} >
-                    This assignment is available online Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kambaz application Links to all relevant source code repos The Kambaz application should include a link to navigate back to the landing page.
-                </FormControl>
-            </FormGroup>
+            <div>
+                <Card>
+                    <Card.Body>
+                        <div contentEditable className={"form-control"}
+                             dangerouslySetInnerHTML={{__html:
+                                     "<p>This assignment is <span style='color: red'>available online</span></p>" +
+                                     "<p>Submit a link to the landing page of your Web application running on Netlify.</p>" +
+                                     "<p>The landing page should include the following:</p>" +
+                                     "<ul><li>Your full name and section</li><li>Links to each of the lab assignments</li><li>Link to the Kambaz application</li><li>Link to all relevant source code repositories</li></ul>" +
+                                     "<p>The Kmabaz application should inlcude a link to navigate back to the landing page.</p>"}}/>
+                    </Card.Body>
+                </Card>
+            </div>
+            {/*<FormGroup>*/}
+            {/*    <FormControl as={"textarea"} rows={8}>*/}
+
+            {/*        /!*This assignment is available online Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kambaz application Links to all relevant source code repos The Kambaz application should include a link to navigate back to the landing page.*!/*/}
+            {/*    </FormControl>*/}
+            {/*</FormGroup>*/}
             <br />
             <FormGroup>
                 <FormControl value={"100"} className={"float-end w-50"}></FormControl>
