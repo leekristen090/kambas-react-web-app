@@ -29,15 +29,9 @@ export default function AssignmentEditor() {
                     </Card.Body>
                 </Card>
             </div>
-            {/*<FormGroup>*/}
-            {/*    <FormControl as={"textarea"} rows={8}>*/}
-
-            {/*        /!*This assignment is available online Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kambaz application Links to all relevant source code repos The Kambaz application should include a link to navigate back to the landing page.*!/*/}
-            {/*    </FormControl>*/}
-            {/*</FormGroup>*/}
             <br />
             <FormGroup>
-                <FormControl value={"100"} className={"float-end w-50"}></FormControl>
+                <FormControl defaultValue={"100"} className={"float-end w-50"}></FormControl>
                 <FormLabel className={"float-end wd-margin-right-left align-items-center"}>Points</FormLabel>
             </FormGroup>
             <br/><br/>
