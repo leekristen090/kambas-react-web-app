@@ -1,111 +1,110 @@
+import {
+    Button, Card,
+    Col,
+    Form,
+    FormControl,
+    FormGroup,
+    FormLabel,
+    FormSelect,
+    Row
+} from "react-bootstrap";
+
 export default function AssignmentEditor() {
     return (
         <div id={"wd-assignments-editor"}>
-            <label htmlFor={"wd-name"}>Assignment Name</label>
-            <input id={"wd-name"} value={"A1 - ENV + HTML"} /> <br/><br/>
-            <textarea id={"wd-description"}>
-                This assignment is available online Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kmabaz application Links to all relevant source code repos The Kambaz application should include a link to navigate back to the landing page.
-            </textarea>
-            <br/>
-            <table>
-                <tr>
-                    <td align={"right"} valign={"top"}>
-                        <label htmlFor={"wd-points"}>Points</label>
-                    </td>
-                    <td>
-                        <input type={"number"} id={"wd-points"} value={100} />
-                    </td>
-                </tr>
+            <FormGroup className={"mb-3"} controlId={"assignment-name"}>
+                <FormLabel>Assignment Name</FormLabel>
+                <FormControl type={"textarea"} value={"A1 - ENV + HTML"}/>
+            </FormGroup>
+            <FormGroup>
+                <FormControl as={"textarea"} rows={8} >
+                    This assignment is available online Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kambaz application Links to all relevant source code repos The Kambaz application should include a link to navigate back to the landing page.
+                </FormControl>
+            </FormGroup>
+            <br />
+            <FormGroup>
+                <FormControl value={"100"} className={"float-end w-50"}></FormControl>
+                <FormLabel className={"float-end wd-margin-right-left align-items-center"}>Points</FormLabel>
+            </FormGroup>
+            <br/><br/>
+            <FormGroup>
+                <FormSelect className={"w-50 float-end"}>
+                    <option value={"ASSIGNMENTS"}>ASSIGNMENTS</option>
+                    <option value={"QUIZZES"}>QUIZZES</option>
+                    <option value={"EXAMS"}>EXAMS</option>
+                </FormSelect>
+                <FormLabel className={"float-end wd-margin-right-left"}>Assignment Group</FormLabel>
+            </FormGroup>
+            <br/><br/>
+            <FormGroup>
+                <FormSelect className={"w-50 float-end"}>
+                    <option value={"PERCENTAGE"}>PERCENTAGE</option>
+                </FormSelect>
+                <FormLabel className={"float-end wd-margin-right-left"}>Display Grade as</FormLabel>
+            </FormGroup>
+            <br/><br/>
+            <div className={"clearfix mb-3"}>
+                <Card className={"w-50 float-end"}>
+                    <Card.Body>
+                        <FormGroup>
+                            <FormSelect className={"w-100"}>
+                                <option value={"ONLINE"}>Online</option>
+                            </FormSelect>
+                        </FormGroup>
+                        <br/>
+                        <b>Online Entry Options</b>
+                        <br/>
+                        <fieldset>
+                            <Form.Group as={Row} className={"mb-0"}>
 
-                <tr>
-                    <td align={"right"} valign={"top"}>
-                        <label htmlFor={"wd-group"}>Assignment Group</label><br/>
-                    </td>
-                    <td>
-                        <select id={"wd-group"}>
-                            <option selected value={"ASSIGNMENTS"} id={"wd-group-assignments"}>ASSIGNMENTS</option>
-                            <option value={"QUIZZES"} id={"wd-group-quizzes"}>QUIZZES</option>
-                            <option value={"EXAMS"} id={"wd-group-exams"}>EXAMS</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td align={"right"} valign={"top"}>
-                        <label htmlFor={"wd-display-grade-as"}>Display Grade As </label>
-                    </td>
-                    <td>
-                        <select id={"wd-display-grade-as"}>
-                            <option selected value={"PERCENTAGE"} id={"wd-display-grade-as-percentage"}>Percentage</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td align={"right"} valign={"top"}>
-                        <label htmlFor={"wd-submission-type"}>Submission Type</label>
-                    </td>
-                    <td>
-                        <select id={"wd-submission-type-select"}>
-                            <option selected value={"ONLINE"} id={"wd-submission-type-select-online"}>Online</option>
-                            <option value={"INPERSON"} id={"wd-submission-type-select-in-person"}>In Person</option>
-                        </select>
-                        <br/><br/>
-                        Online Entry Options<br/>
-                        <input type={"checkbox"} id={"wd-text-entry"} name={"chkbox-submission-type"}/>
-                        <label htmlFor={"wd-text-entry"}>Text Entry</label><br/>
-                        <input type={"checkbox"} id={"wd-website-url"} name={"chkbox-submission-type"}/>
-                        <label htmlFor={"wd-website-url"}>Website Url</label><br/>
-                        <input type={"checkbox"} id={"wd-media-recordings"} name={"chkbox-submission-type"} />
-                        <label htmlFor={"wd-media-recordings"}>Media Recordings</label><br/>
-                        <input type={"checkbox"} id={"wd-student-annotation"} name={"chkbox-submission-type"}/>
-                        <label htmlFor={"wd-student-annotation"}>Student Annotation</label><br/>
-                        <input type={"checkbox"} id={"wd-file-upload"} name={"chkbox-submission-type"} />
-                        <label htmlFor={"wd-file-upload"}>File Upload</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td align={"right"} valign={"top"}>
-                        <br/><label htmlFor={"wd-assign-to"}>Assign To</label>
-                    </td>
-                    <td>
-                        <br/><input id={"wd-assign-to"} value={"Everyone"}/>
-                    </td>
-                </tr>
-                <tr>
-                    <td align={"right"} valign={"top"}>
-                        <label htmlFor={"wd-due-date"}>Due </label>
-                    </td>
-                    <td>
-                        <input type={"date"} id={"wd-due-date"} value={"2024-05-13"}/>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td align={"left"} valign={"top"}>
-                        <br/><label htmlFor={"wd-available-from"}> Available from</label>
-                    </td>
-                    <td align={"left"} valign={"top"}>
-                        <br/><label htmlFor={"wd-available-until"}>Until</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td align={"left"}>
-                        <input type={"date"} id={"wd-available-from"} value={"2025-05-05"} />
-                    </td>
-                    <td align={"left"}>
-                        <input type={"date"} id={"wd-available-until"} value={"2025-05-13"} />
-                    </td>
-                </tr>
-            </table>
+                                <Col sm={10}>
+                                    <Form.Check type={"checkbox"} label={"Text Entry"}
+                                                name={"submissionchkbx"}/>
+                                    <Form.Check label={"Website URL"}
+                                                name={"submissionchkbx"}/>
+                                    <Form.Check label={"Media Recordings"}
+                                                name={"submissionchkbx"}/>
+                                    <Form.Check label={"Student Annotations"}
+                                                name={"submissionchkbx"}/>
+                                    <Form.Check label={"File Uploads"}
+                                                name={"submissionchkbx"}/>
+                                </Col>
+                            </Form.Group>
+                        </fieldset>
+                    </Card.Body>
+                </Card>
+                <FormLabel className={"float-end wd-margin-right-left"}>Submission Type</FormLabel>
+            </div>
+            <br/>
+            <div className={"clearfix mb-3"}>
+                <Card className={"w-50 float-end"}>
+                    <Card.Body>
+                        <FormLabel><b>Assign to</b></FormLabel>
+                        <FormSelect>
+                            <option value={"EVERYONE"}>Everyone</option>
+                        </FormSelect>
+                        <br/>
+                        <FormLabel><b>Due</b></FormLabel>
+                        <FormControl type={"datetime-local"} defaultValue={"2025-05-13T23:59"}/>
+                        <br/>
+                        <FormGroup as={Row}>
+                            <Col sm={6}>
+                                <FormLabel><b>Available From</b></FormLabel>
+                                <FormControl type={"datetime-local"} defaultValue={"2025-05-06T12:00"}/>
+                            </Col>
+                            <Col sm={6}>
+                                <FormLabel><b>Until</b></FormLabel>
+                                <FormControl type={"datetime-local"} defaultValue={"2025-05-13T23:59"}/>
+                            </Col>
+                        </FormGroup>
+                    </Card.Body>
+                </Card>
+                <FormLabel className={"float-end wd-margin-right-left"}>Assign</FormLabel>
+            </div>
+            <br/>
             <hr/>
-            <table>
-                <tr>
-                    <td align={"right"}>
-                        <button type={"button"}>Cancel</button>
-                        <button type={"button"}>Save</button>
-                    </td>
-                </tr>
-            </table>
+            <Button variant={"danger"} className={"float-end"}>Save</Button>
+            <Button variant={"secondary"} className={"float-end me-2"}>Cancel</Button>
         </div>
     );
 }
