@@ -21,7 +21,7 @@ export default function Modules() {
                             <BsGripVertical className={"me-2 fs-3"} />Introduction to the course <LessonControlButtons />
                         </ListGroup.Item>
                         <ListGroup.Item className="wd-lesson p-3 ps-1">
-                            Learn what is Web Development
+                            <BsGripVertical className={"me-2 fs-3"} />Learn what is Web Development<LessonControlButtons />
                         </ListGroup.Item>
                     </ListGroup>
                 </ListGroup.Item>
@@ -31,10 +31,13 @@ export default function Modules() {
                     </div>
                     <ListGroup className="wd-lessons rounded-0">
                         <ListGroup.Item className="wd-lesson p-3 ps-1">
-                            <BsGripVertical className={"me-2 fs-3"} />LESSON 1<LessonControlButtons />
+                            <BsGripVertical className={"me-2 fs-3"} />LEARNING OBJECTIVES<LessonControlButtons />
                         </ListGroup.Item>
                         <ListGroup.Item className="wd-lesson p-3 ps-1">
-                            <BsGripVertical className={"me-2 fs-3"} />LESSON 2<LessonControlButtons />
+                            <BsGripVertical className={"me-2 fs-3"} />Intro to CSS<LessonControlButtons />
+                        </ListGroup.Item>
+                        <ListGroup.Item className="wd-lesson p-3 ps-1">
+                            <BsGripVertical className={"me-2 fs-3"} />The Box Model<LessonControlButtons />
                         </ListGroup.Item>
                     </ListGroup>
                 </ListGroup.Item>
