@@ -30,10 +30,10 @@ import Styles from "./Styles.tsx";
 import Add from "./Add.tsx";
 import Square from "./Square.tsx";
 import Highlight from "./Highlight.tsx";
-import AddPathParameters from "./AddPathParameters.tsx";
 import PathParameters from "./PathParameters.tsx";
 
 export default function Lab3() {
+        console.log('Hello World!')
     return (
         <div id={"wd-lab3"} className={"container"}>
             <h2>Lab 3 - JAVASCRIPT</h2>
