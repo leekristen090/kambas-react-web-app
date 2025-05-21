@@ -25,6 +25,8 @@ import Spreading from "./Spreading.tsx";
 import Destructing from "./Destructing.tsx";
 import FunctionDestructing from "./FunctionDestructing.tsx";
 import DestructingImports from "./DestructingImports.tsx";
+import Classes from "./Classes.tsx";
+import Styles from "./Styles.tsx";
 
 export default function Lab3() {
     return (
@@ -57,6 +59,8 @@ export default function Lab3() {
             <Destructing />
             <FunctionDestructing />
             <DestructingImports />
+            <Classes />
+            <Styles />
         </div>
     );
 }
