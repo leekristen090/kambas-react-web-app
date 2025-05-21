@@ -27,11 +27,16 @@ import FunctionDestructing from "./FunctionDestructing.tsx";
 import DestructingImports from "./DestructingImports.tsx";
 import Classes from "./Classes.tsx";
 import Styles from "./Styles.tsx";
+import Add from "./Add.tsx";
+import Square from "./Square.tsx";
+import Highlight from "./Highlight.tsx";
+import AddPathParameters from "./AddPathParameters.tsx";
+import PathParameters from "./PathParameters.tsx";
 
 export default function Lab3() {
     return (
-        <div id={"wd-lab3"}>
-            <h2>Lab 3</h2>
+        <div id={"wd-lab3"} className={"container"}>
+            <h2>Lab 3 - JAVASCRIPT</h2>
             <VariablesAndConstants />
             <VariableTypes />
             <BooleanVariables />
@@ -61,6 +66,13 @@ export default function Lab3() {
             <DestructingImports />
             <Classes />
             <Styles />
+            <Add a={3} b={4} />
+            <h4>Square of 4</h4>
+            <Square>4</Square><hr/>
+            <Highlight>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis cum, dolore esse expedita impedit incidunt inventore laboriosam laborum libero, nam nobis quibusdam repellendus sint tempore ut. Eos quis recusandae sed!
+            </Highlight>
+            <PathParameters />
         </div>
     );
 }

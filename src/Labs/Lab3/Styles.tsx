@@ -11,7 +11,7 @@ export default function Styles() {
                 Yellow Background
             </div>
             <div style={bgRed}>Red Background</div>
-            <div style={bgBlue}>Blue Background</div>
+            <div style={bgBlue}>Blue Background</div><hr/>
         </div>
     );
 }
