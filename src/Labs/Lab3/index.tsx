@@ -22,6 +22,9 @@ import House from "./House.tsx";
 import TodoItem from "./todo/TodoItem.tsx";
 import TodoList from "./todo/TodoList.tsx";
 import Spreading from "./Spreading.tsx";
+import Destructing from "./Destructing.tsx";
+import FunctionDestructing from "./FunctionDestructing.tsx";
+import DestructingImports from "./DestructingImports.tsx";
 
 export default function Lab3() {
     return (
@@ -51,7 +54,9 @@ export default function Lab3() {
             <TodoItem />
             <TodoList />
             <Spreading />
-
+            <Destructing />
+            <FunctionDestructing />
+            <DestructingImports />
         </div>
     );
 }
