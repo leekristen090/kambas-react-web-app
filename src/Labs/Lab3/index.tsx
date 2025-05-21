@@ -9,6 +9,19 @@ import LegacyFunctions from "./LegacyFunctions.tsx";
 import ArrowFunctions from "./ArrowFunctions.tsx";
 import ImpliedReturn from "./ImpliedReturn.tsx";
 import TemplateLiterals from "./TemplateLiterals.tsx";
+import SimpleArrays from "./SimpleArrays.tsx";
+import ArrayIndexAndLength from "./ArrayIndexAndLength.tsx";
+import AddingAndRemovingToFromArrays from "./AddingAndRemovingToFromArrays.tsx";
+import ForLoops from "./ForLoops.tsx";
+import MapFunction from "./MapFunction.tsx";
+import FindFunction from "./FindFunction.tsx";
+import FindIndex from "./FindIndex.tsx";
+import FilterFunction from "./FilterFunction.tsx";
+import JsonStringify from "./JsonStringify.tsx";
+import House from "./House.tsx";
+import TodoItem from "./todo/TodoItem.tsx";
+import TodoList from "./todo/TodoList.tsx";
+import Spreading from "./Spreading.tsx";
 
 export default function Lab3() {
     return (
@@ -25,6 +38,20 @@ export default function Lab3() {
             <ArrowFunctions />
             <ImpliedReturn />
             <TemplateLiterals />
+            <SimpleArrays />
+            <ArrayIndexAndLength />
+            <AddingAndRemovingToFromArrays />
+            <ForLoops />
+            <MapFunction />
+            <FindFunction />
+            <FindIndex />
+            <FilterFunction />
+            <JsonStringify />
+            <House />
+            <TodoItem />
+            <TodoList />
+            <Spreading />
+
         </div>
     );
 }
