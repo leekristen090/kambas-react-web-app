@@ -4,7 +4,7 @@ import {BsGripVertical} from "react-icons/bs";
 import AssignmentControlButtons from "./AssignmentControlButtons.tsx";
 import { MdAssignment } from "react-icons/md";
 import LessonControlButtons from "../Modules/LessonControlButtons.tsx";
-import {Link, useParams} from "react-router";
+import {useParams} from "react-router";
 import * as db from "../../Database";
 
 export default function Assignments() {
