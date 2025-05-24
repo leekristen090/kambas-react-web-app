@@ -12,14 +12,24 @@ import {Link, useParams} from "react-router";
 import {assignments} from "../../Database";
 
 export default function AssignmentEditor() {
-    const {aid} = useParams();
-    const{cid} = useParams();
+    const {cid, aid} = useParams();
     const assignment = assignments.find((assignment) => assignment._id === aid);
+    if (!assignment) {
+        return (
+            <div id={"wd-assignments-editor"}>
+                <h2>Assignment not found</h2>
+                <Link to={`/Kambaz/Courses/${cid}/Assignments`}
+                      className={"btn btn-secondary"}>
+                    Back to Assignments
+                </Link>
+            </div>
+        );
+    }
     return (
         <div id={"wd-assignments-editor"}>
             <FormGroup className={"mb-3"} controlId={"assignment-name"}>
                 <FormLabel>Assignment Name</FormLabel>
-                <FormControl type={"textarea"} value={`${assignment.title}`}/>
+                <FormControl type={"textarea"} defaultValue={assignment.title}/>
             </FormGroup>
 
             <div>
@@ -31,7 +41,7 @@ export default function AssignmentEditor() {
                                      "<p>Submit a link to the landing page of your Web application running on Netlify.</p>" +
                                      "<p>The landing page should include the following:</p>" +
                                      "<ul><li>Your full name and section</li><li>Links to each of the lab assignments</li><li>Link to the Kambaz application</li><li>Link to all relevant source code repositories</li></ul>" +
-                                     "<p>The Kmabaz application should inlcude a link to navigate back to the landing page.</p>"}}/>
+                                     "<p>The Kambaz application should include a link to navigate back to the landing page.</p>"}}/>
                     </Card.Body>
                 </Card>
             </div>
