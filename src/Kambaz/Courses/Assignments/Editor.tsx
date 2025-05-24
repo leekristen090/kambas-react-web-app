@@ -1,5 +1,5 @@
 import {
-    Button, Card,
+    Card,
     Col,
     Form,
     FormControl,
@@ -8,14 +8,20 @@ import {
     FormSelect,
     Row
 } from "react-bootstrap";
+import {Link, useParams} from "react-router";
+import {assignments} from "../../Database";
 
 export default function AssignmentEditor() {
+    const {aid} = useParams();
+    const{cid} = useParams();
+    const assignment = assignments.find((assignment) => assignment._id === aid);
     return (
         <div id={"wd-assignments-editor"}>
             <FormGroup className={"mb-3"} controlId={"assignment-name"}>
                 <FormLabel>Assignment Name</FormLabel>
-                <FormControl type={"textarea"} value={"A1 - ENV + HTML"}/>
+                <FormControl type={"textarea"} value={`${assignment.title}`}/>
             </FormGroup>
+
             <div>
                 <Card>
                     <Card.Body>
@@ -111,8 +117,10 @@ export default function AssignmentEditor() {
             </div>
             <br/>
             <hr/>
-            <Button variant={"danger"} className={"float-end"}>Save</Button>
-            <Button variant={"secondary"} className={"float-end me-2"}>Cancel</Button>
+            <Link to={`/Kambaz/Courses/${cid}/Assignments`}
+                  className={"float-end me-2 btn btn-danger"}>Save</Link>
+            <Link to={`/Kambaz/Courses/${cid}/Assignments`}
+                  className={"float-end me-2 btn btn-secondary"}>Cancel</Link>
         </div>
     );
 }
