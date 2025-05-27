@@ -6,6 +6,9 @@ import Counter from "./Counter.tsx";
 import BooleanStateVariables from "./BooleanStateVariables.tsx";
 import StringStateVariables from "./StringStateVariables.tsx";
 import DateStateVariable from "./DateStateVariable.tsx";
+import ObjectStateVariable from "./ObjectStateVariable.tsx";
+import ArrayStateVariable from "./ArrayStateVariable.tsx";
+import ParentStateComponent from "./ParentStateComponent.tsx";
 
 export default function Lab4() {
     function sayHello() {
@@ -22,6 +25,9 @@ export default function Lab4() {
             <BooleanStateVariables />
             <StringStateVariables />
             <DateStateVariable />
+            <ObjectStateVariable />
+            <ArrayStateVariable />
+            <ParentStateComponent />
         </div>
     );
 }
