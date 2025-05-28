@@ -9,6 +9,7 @@ import DateStateVariable from "./DateStateVariable.tsx";
 import ObjectStateVariable from "./ObjectStateVariable.tsx";
 import ArrayStateVariable from "./ArrayStateVariable.tsx";
 import ParentStateComponent from "./ParentStateComponent.tsx";
+import ReduxExamples from "./ReduxExamples";
 
 export default function Lab4() {
     function sayHello() {
@@ -28,6 +29,7 @@ export default function Lab4() {
             <ObjectStateVariable />
             <ArrayStateVariable />
             <ParentStateComponent />
+            <ReduxExamples />
         </div>
     );
 }
