@@ -5,8 +5,7 @@ export default function AssignmentControlButtons() {
     return (
         <div className={"float-end"}>
             40% of Total
-            {/*<p className={"wd-border-solid wd-border-thin"}>40% of Total</p>*/}
-            <BsPlus />
+            <BsPlus className={"fs-1"} />
             <IoEllipsisVertical className={"fs-4"} />
 
         </div>

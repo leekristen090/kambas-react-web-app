@@ -7,24 +7,31 @@ import {useParams} from "react-router";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addModule, deleteModule, editModule, updateModule} from "./reducer.ts";
+import AuthCheck from "../../Account/AuthCheck.tsx";
 
 export default function Modules() {
     const { cid } = useParams();
     const [moduleName, setModuleName] = useState("");
     const { modules } = useSelector((state: any) => state.modulesReducer);
     const dispatch = useDispatch();
+    const {isFaculty} = AuthCheck();
 
     return (
         <div>
             <ModulesControls setModuleName={setModuleName} moduleName={moduleName} addModule={() => {
                 dispatch(addModule({name: moduleName, course: cid}));
                 setModuleName("");
-            }} /><br /><br /><br /><br />
+            }} />
+            <br /><br /><br /><br />
             <ListGroup className="rounded-0" id="wd-modules">
                 {modules.filter((module: any) => module.course === cid).map((module: any) => (
                     <ListGroup.Item className="wd-module p-0 mb-5 fs-5 border-gray">
                         <div className="wd-title p-3 ps-2 bg-secondary">
-                            <BsGripVertical className={"me-2 fs-3"} />
+                            {isFaculty &&
+                                <>
+                                    <BsGripVertical className={"me-2 fs-3"} />
+                                </>
+                            }
                             {!module.editing && module.name}
                             {module.editing && (
                                 <FormControl className={"w-50 d-inline-block"}
@@ -43,7 +50,13 @@ export default function Modules() {
                             <ListGroup className={"wd-lessons rounded-0"}>
                                 {module.lessons.map((lesson: any) => (
                                     <ListGroup.Item className={"wd-lesson p-3 ps-1"}>
-                                        <BsGripVertical className={"me-2 fs-3"} /> {lesson.name} <LessonControlButtons />
+                                        {isFaculty &&
+                                            <>
+                                                <BsGripVertical className={"me-2 fs-3"} />
+                                            </>
+                                        }
+                                        {lesson.name}
+                                        <LessonControlButtons />
                                     </ListGroup.Item>
                                 ))}
                             </ListGroup>
