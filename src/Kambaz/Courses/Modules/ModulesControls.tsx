@@ -13,7 +13,7 @@ export default function ModulesControls(
     const handleShow = () => setShow(true);
     const {isFaculty} = AuthCheck();
     return (
-        <div id="wd-modules-controls" className="text-nowrap">
+        <div id={"wd-modules-controls"} className={"text-nowrap"}>
             {isFaculty &&
                 <>
                     <Button variant={"danger"} onClick={handleShow} size={"lg"} className={"me-1 float-end"}

@@ -1,6 +1,6 @@
 import {Button, FormControl, Modal} from "react-bootstrap";
 
-export default function ModuleEditor({ show, handleClose,dialogTitle, moduleName, setModuleName, addModule, } : {
+export default function ModuleEditor({ show, handleClose, dialogTitle, moduleName, setModuleName, addModule, } : {
     show: boolean; handleClose: () => void; dialogTitle: string; moduleName: string;
     setModuleName: (name: string) => void; addModule: () => void;
 }) {

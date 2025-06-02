@@ -48,7 +48,9 @@ export default function AssignmentEditor() {
             <br />
             <FormGroup>
                 <FormControl defaultValue={"100"} className={"float-end w-50"}></FormControl>
-                <FormLabel className={"float-end wd-margin-right-left align-items-center"}>Points</FormLabel>
+                <FormLabel className={"float-end wd-margin-right-left align-items-center"}>
+                    Points
+                </FormLabel>
             </FormGroup>
             <br/><br/>
             <FormGroup>
@@ -127,8 +129,9 @@ export default function AssignmentEditor() {
             </div>
             <br/>
             <hr/>
-            <Link to={`/Kambaz/Courses/${cid}/Assignments`}
-                  className={"float-end me-2 btn btn-danger"}>Save</Link>
+            <Link to={`/Kambaz/Courses/${cid}/Assignments`} className={"float-end me-2 btn btn-danger"}>
+                Save
+            </Link>
             <Link to={`/Kambaz/Courses/${cid}/Assignments`}
                   className={"float-end me-2 btn btn-secondary"}>Cancel</Link>
         </div>

@@ -3,20 +3,24 @@ import {ListGroup} from "react-bootstrap";
 import {BsGripVertical} from "react-icons/bs";
 import AssignmentControlButtons from "./AssignmentControlButtons.tsx";
 import { MdAssignment } from "react-icons/md";
-import LessonControlButtons from "../Modules/LessonControlButtons.tsx";
 import {useParams} from "react-router";
-import * as db from "../../Database";
 import AuthCheck from "../../Account/AuthCheck.tsx";
+//import * as db from "../../Database";
+import AssignControl from "./AssignControl.tsx";
+import {deleteAssignment} from "./reducer.ts";
+import {useDispatch, useSelector} from "react-redux";
 
 export default function Assignments() {
     const { cid } = useParams();
-    const assignments = db.assignments;
+    // const assignments = db.assignments;
+    const {assignments} = useSelector((state: any) => state.assignmentReducer);
     const {isFaculty} = AuthCheck();
+    const dispatch = useDispatch();
     return (
         <div id={"wd-assignments"}>
             <AssignmentControls />
             <br /><br /><br /><br />
-            <ListGroup className="rounded-0" id="wd-assignments">
+            <ListGroup className={"rounded-0"} id={"wd-assignments"}>
                 <ListGroup.Item className={"wd-module p-0 mb-5 fs-5 border-gray"}>
                     <div className="wd-title p-3 ps-2 bg-secondary">
                         {isFaculty && <><BsGripVertical className={"me-2 fs-3"} /></>}
@@ -36,7 +40,10 @@ export default function Assignments() {
                                             {assignment.title}
                                         </a>
                                     </div>
-                                    {isFaculty && <><LessonControlButtons /></>}
+                                    {isFaculty && <>
+                                        <AssignControl assignmentId={assignment._id} deleteAssignment={(assignmentId) => dispatch(deleteAssignment(assignmentId))}  />
+                                    </>
+                                    }
                                 </div>
                             </ListGroup.Item>
                         </ListGroup>
