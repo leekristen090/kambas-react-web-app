@@ -1,7 +1,6 @@
 import {Link, useNavigate} from "react-router";
 import {Button, Card, Col, FormControl, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
-//import * as db from "./Database";
 import AuthCheck from "./Account/AuthCheck.tsx";
 import {useState} from "react";
 import {addCourse, deleteCourse, updateCourse} from "./Courses/reducer.ts";
@@ -12,7 +11,6 @@ export default function Dashboard() {
     const navigate = useNavigate();
     const {courses} = useSelector((state: any) => state.courseReducer);
     const {currentUser} = useSelector((state: any) => state.accountReducer);
-    //const {enrollments} = db;
     const {enrollments} = useSelector((state: any) => state.enrollmentReducer);
     const {isFaculty} = AuthCheck();
     const [course, setCourse] = useState<any>({
