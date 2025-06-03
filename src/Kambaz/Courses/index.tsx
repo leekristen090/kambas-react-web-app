@@ -7,6 +7,7 @@ import AssignmentEditor from "./Assignments/Editor.tsx";
 import {FaAlignJustify} from "react-icons/fa";
 import PeopleTable from "./People/Table.tsx";
 import {useSelector} from "react-redux";
+//import EnrollProtectedRoute from "../Enrollments/ProtectedRoute.tsx";
 
 export default function Courses() {
     const { cid } = useParams();
@@ -26,7 +27,10 @@ export default function Courses() {
                 <div className={"flex-fill"}>
                     <Routes>
                         <Route path={"/"} element={<Navigate to={"Home"} />} />
-                        <Route path={"Home"} element={<Home />} />
+                        <Route path={"Home"} element={
+                            <Home />
+                        }
+                        />
                         <Route path={"Modules"} element={<Modules />} />
                         <Route path={"Assignments"} element={ <Assignments />} />
                         <Route path={"Assignments/:aid"} element={ <AssignmentEditor />} />

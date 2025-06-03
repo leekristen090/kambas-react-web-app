@@ -4,8 +4,8 @@ import Dashboard from "./Dashboard";
 import KambazNavigation from "./Navigation.tsx";
 import Courses from "./Courses";
 import "./styles.css";
-
 import ProtectedRoute from "./Account/ProtectedRoute.tsx";
+import EnrollProtectedRoute from "./Enrollments/ProtectedRoute.tsx";
 
 export default function Kambaz() {
     return(
@@ -21,9 +21,9 @@ export default function Kambaz() {
                         </ProtectedRoute>
                     } />
                     <Route path={"/Courses/:cid/*"} element={
-                        <ProtectedRoute>
+                        <EnrollProtectedRoute>
                             <Courses />
-                        </ProtectedRoute>
+                        </EnrollProtectedRoute>
                     } />
                     <Route path={"/Calendar"} element={<h1>Calendar</h1>} />
                     <Route path={"/Inbox"} element={<h1>Inbox</h1>} />
