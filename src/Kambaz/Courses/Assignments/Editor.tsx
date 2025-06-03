@@ -20,8 +20,6 @@ export default function AssignmentEditor() {
     const navigate = useNavigate();
     const { assignments } = useSelector((state: any) => state.assignmentReducer);
     const isNew = aid === "new";
-    //const assignment = assignments.find((assignment) => assignment._id === aid);
-
     const [assignment, setAssignment] = useState({
         _id: isNew ? '' : aid,
         title: "",

@@ -1,18 +1,22 @@
 import {Link} from "react-router";
 import {Button, Card, Col, FormControl, Row} from "react-bootstrap";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import * as db from "./Database";
 import AuthCheck from "./Account/AuthCheck.tsx";
+import {useState} from "react";
+import {addCourse, deleteCourse, updateCourse} from "./Courses/reducer.ts";
 
-export default function Dashboard({
-    courses, course, setCourse, addNewCourse, deleteCourse, updateCourse}: {
-    courses: any[]; course: any; setCourse: (course: any) => void;
-    addNewCourse: () => void; deleteCourse: (course: any) => void;
-    updateCourse: () => void; }) {
-
+export default function Dashboard() {
+    const dispatch = useDispatch();
+    const {courses} = useSelector((state: any) => state.courseReducer);
     const {currentUser} = useSelector((state: any) => state.accountReducer);
     const {enrollments} = db;
     const {isFaculty} = AuthCheck();
+    const [course, setCourse] = useState<any>({
+            _id: "0", name: "New Course", number: "New Number",
+            startDate: "2023-09-10", endDate: "2023-12-15",
+            image: "/images/reactjs.jpg", description: "New Description"
+        });
     return (
         <div id={"wd-dashboard"}>
             <h1 id={"wd-dashboard-title"}>Dashboard</h1><hr/>
@@ -21,10 +25,10 @@ export default function Dashboard({
                     <h5>
                         New Course
                         <button className={"btn btn-primary float-end"}
-                                id={"wd-add-new-course-click"} onClick={addNewCourse}>
+                                id={"wd-add-new-course-click"} onClick={() => dispatch(addCourse(course))}>
                             Add
                         </button>
-                        <button className={"btn btn-warning float-end me-2"} onClick={updateCourse}
+                        <button className={"btn btn-warning float-end me-2"} onClick={() => dispatch(updateCourse(course))}
                                 id={"wd-update-course-click"}>
                             Update
                         </button>
@@ -39,7 +43,7 @@ export default function Dashboard({
                     <hr/>
                 </>
             }
-            <h2 id={"wd-dashboard-published"}>Published Courses ({courses.filter((course) =>
+            <h2 id={"wd-dashboard-published"}>Published Courses ({courses.filter((course: any) =>
                 enrollments.some(
                     (enrollment) =>
                         enrollment.user === currentUser._id &&
@@ -48,13 +52,13 @@ export default function Dashboard({
             <div id={"wd-dashboard-courses"}>
                 <Row xs={1} md={5} className={"g-4"}>
                     {courses
-                        .filter((course) =>
+                        .filter((course: any) =>
                             enrollments.some(
                                 (enrollment) =>
                                     enrollment.user === currentUser._id &&
                                     enrollment.course === course._id
                             ))
-                        .map((course) => (
+                        .map((course: any) => (
                             <Col className={"wd-dashboard-course"} style={{ width: "270px" }}>
                                 <Card>
                                     <Link to={`/Kambaz/Courses/${course._id}/Home`}
@@ -76,7 +80,7 @@ export default function Dashboard({
                                                 <>
                                                     <Button variant={"danger"}
                                                             onClick={(event) => {
-                                                                event.preventDefault(); deleteCourse(course._id);
+                                                                event.preventDefault(); dispatch(deleteCourse(course._id));
                                                             }} className={"float-end"} id={"wd-delete-course-click"}>
                                                         Delete
                                                     </Button>
