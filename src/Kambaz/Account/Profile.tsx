@@ -1,19 +1,25 @@
-import {Link, useNavigate} from "react-router";
+import {useNavigate} from "react-router";
 import {FormControl, FormSelect} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentUser} from "./reducer.ts";
+import * as client from "./client.ts";
 
 export default function Profile() {
     const [profile, setProfile] = useState<any>({});
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { currentUser } = useSelector((state: any) => state.accountReducer);
+    const updateProfile = async () => {
+        const updatedProfile = await client.updateUser(profile);
+        dispatch(setCurrentUser(updatedProfile));
+    };
     const fetchProfile = () => {
         if (!currentUser) return navigate("/Kambaz/Account/Signin");
         setProfile(currentUser);
     };
-    const signout = () => {
+    const signout = async () => {
+        await client.signout();
         dispatch(setCurrentUser(null));
         navigate("/Kambaz/Account/Signin");
     };
@@ -35,7 +41,7 @@ export default function Profile() {
                          onChange={(e) => setProfile({...profile, lastName: e.target.value})}/>
             <FormControl defaultValue={profile.dob} type={"date"} id={"wd-dob"} title={"Date of Birth"}
             className={"mb-2"} onChange={(e) => setProfile({...profile, dob: e.target.value})}/>
-            <FormControl defaultValue={profile.email} type={"email"}
+            <FormControl defaultValue={profile.email} type={"email"} placeholder={"Email"}
                          id={"wd-email"} title={"Email Address"} className={"mb-2"}
                          onChange={(e) => setProfile({...profile, email: e.target.value})}/>
             <FormSelect defaultValue={profile.role} id={"wd-role"} title={"Role"} className={"mb-2"}
@@ -45,10 +51,14 @@ export default function Profile() {
                 <option value={"FACULTY"}>Faculty</option>
                 <option value={"STUDENT"}>Student</option>
             </FormSelect>
-            <Link to={"/Kambaz/Account/Signin"}
-                  className={"btn btn-primary w-100 mb-2 bg-danger text-white"} onClick={signout}>
+            <button onClick={updateProfile} className="btn btn-primary w-100 mb-2">Update</button>
+            {/*<Link to={"/Kambaz/Account/Signin"}*/}
+            {/*      className={"btn btn-primary w-100 mb-2 bg-danger text-white"} onClick={signout}>*/}
+            {/*    Sign Out*/}
+            {/*</Link>*/}
+            <button onClick={signout} className={"btn btn-danger w-100 mb-2 text-white"}>
                 Sign Out
-            </Link>
+            </button>
         </div>
     );
 }

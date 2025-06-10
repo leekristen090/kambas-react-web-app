@@ -3,21 +3,28 @@ import {Button, Card, Col, FormControl, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import AuthCheck from "./Account/AuthCheck.tsx";
 import {useState} from "react";
-import {addCourse, deleteCourse, updateCourse} from "./Courses/reducer.ts";
+//import {addCourse, deleteCourse, updateCourse} from "./Courses/reducer.ts";
 import {enrollCourse, unenrollCourse} from "./Enrollments/reducer.ts";
+import * as enrollmentsClient from "./Enrollments/client.ts";
 
-export default function Dashboard() {
+export default function Dashboard({courses, course, setCourse, addNewCourse, deleteCourse, updateCourse,}: {
+    courses: any[];
+    course: any;
+    setCourse: (course: any) => void;
+    addNewCourse: () => void;
+    deleteCourse: (id: string) => void;
+    updateCourse: (id: string) => void; }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {courses} = useSelector((state: any) => state.courseReducer);
+    // const {courses} = useSelector((state: any) => state.courseReducer);
     const {currentUser} = useSelector((state: any) => state.accountReducer);
     const {enrollments} = useSelector((state: any) => state.enrollmentReducer);
     const {isFaculty} = AuthCheck();
-    const [course, setCourse] = useState<any>({
-            _id: "0", name: "New Course", number: "New Number",
-            startDate: "2023-09-10", endDate: "2023-12-15",
-            image: "/images/reactjs.jpg", description: "New Description"
-        });
+    // const [course, setCourse] = useState<any>({
+    //     _id: "0", name: "New Course", number: "New Number",
+    //     startDate: "2023-09-10", endDate: "2023-12-15",
+    //     image: "/images/reactjs.jpg", description: "New Description"
+    // });
     const [showAll, setShowAll] = useState(false);
     const isEnrolled = (courseId: string) =>
         enrollments.some(
@@ -33,6 +40,14 @@ export default function Dashboard() {
         }
     };
     const visibleCourses = showAll ? courses : courses.filter((course: any) => isEnrolled(course._id));
+    const handleEnroll = async (courseId: string) => {
+        await enrollmentsClient.enrollUserInCourse(currentUser._id, courseId);
+        dispatch(enrollCourse({userId: currentUser._id, courseId}));
+    };
+    const handleUnenroll = async (courseId: string) => {
+        await enrollmentsClient.unenrollUserInCourse(currentUser._id, courseId);
+        dispatch(unenrollCourse({userId: currentUser._id, courseId}));
+    };
 
     return (
         <div id={"wd-dashboard"}>
@@ -48,10 +63,11 @@ export default function Dashboard() {
                     <h5>
                         New Course
                         <button className={"btn btn-primary float-end"}
-                                id={"wd-add-new-course-click"} onClick={() => dispatch(addCourse(course))}>
+                                id={"wd-add-new-course-click"}
+                                onClick={ addNewCourse}>
                             Add
                         </button>
-                        <button className={"btn btn-warning float-end me-2"} onClick={() => dispatch(updateCourse(course))}
+                        <button className={"btn btn-warning float-end me-2"} onClick={() => updateCourse(course._id)}
                                 id={"wd-update-course-click"}>
                             Update
                         </button>
@@ -98,7 +114,7 @@ export default function Dashboard() {
                                                 <>
                                                     <Button variant={"danger"}
                                                             onClick={(event) => {
-                                                                event.preventDefault(); dispatch(deleteCourse(course._id));
+                                                                event.preventDefault(); deleteCourse(course._id);
                                                             }} className={"float-end me-1"} id={"wd-delete-course-click"}>
                                                         Delete
                                                     </Button>
@@ -113,22 +129,21 @@ export default function Dashboard() {
                                             <div>
                                                 {enrolled ? (
                                                     <Button variant={"danger"} className={"m-1 float-start"}
-                                                            onClick={(e) => {
+                                                            onClick={async (e) => {
                                                                 e.preventDefault();
                                                                 e.stopPropagation();
-                                                                dispatch(unenrollCourse({ userId: currentUser._id, courseId: course._id }));
+                                                                // dispatch(unenrollCourse({ userId: currentUser._id, courseId: course._id }));
+                                                                await handleUnenroll(course._id);
                                                             }}>
                                                         Unenroll
                                                     </Button>
                                                 ) : (
                                                     <Button variant={"success"} className={"m-1 float-start"}
-                                                            onClick={(e) => {
+                                                            onClick={async (e) => {
                                                                 e.preventDefault();
                                                                 e.stopPropagation();
-                                                                dispatch(enrollCourse({
-                                                                    userId: currentUser._id,
-                                                                    courseId: course._id
-                                                                }));
+                                                                // dispatch(enrollCourse({userId: currentUser._id, courseId: course._id}));
+                                                                await handleEnroll(course._id);
                                                             }}>
                                                         Enroll
                                                     </Button>

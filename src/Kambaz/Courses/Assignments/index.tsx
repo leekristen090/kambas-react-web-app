@@ -7,8 +7,11 @@ import {useParams} from "react-router";
 import AuthCheck from "../../Account/AuthCheck.tsx";
 //import * as db from "../../Database";
 import AssignControl from "./AssignControl.tsx";
-import {deleteAssignment} from "./reducer.ts";
+import {deleteAssignment, setAssignments} from "./reducer.ts";
 import {useDispatch, useSelector} from "react-redux";
+import * as coursesClient from "../client.ts";
+import {useEffect} from "react";
+import * as assignmentsClient from "../Assignments/client.ts";
 
 export default function Assignments() {
     const { cid } = useParams();
@@ -16,6 +19,23 @@ export default function Assignments() {
     const {assignments} = useSelector((state: any) => state.assignmentReducer);
     const {isFaculty} = AuthCheck();
     const dispatch = useDispatch();
+    const fetchAssignments = async () => {
+        const assignments = await coursesClient.findAssignmentsForCourse(cid as string);
+        dispatch(setAssignments(assignments));
+    };
+    const deleteAssignmentForCourse = async (assignmentId: string) => {
+        if (!cid) return;
+        try {
+            await assignmentsClient.deleteAssignmentForCourse(cid, assignmentId);
+            dispatch(deleteAssignment(assignmentId));
+            await fetchAssignments();
+        } catch (error) {
+            console.error("Failed to delete assignment:", error);
+        }
+    };
+    useEffect(() => {
+        fetchAssignments();
+    }, []);
     return (
         <div id={"wd-assignments"}>
             <AssignmentControls />
@@ -28,7 +48,9 @@ export default function Assignments() {
                         {isFaculty && <><AssignmentControlButtons /></>}
 
                     </div>
-                    {assignments.filter((assignment: any) => assignment.course === cid).map((assignment: any) =>(
+                    {assignments
+                        // .filter((assignment: any) => assignment.course === cid)
+                        .map((assignment: any) =>(
                         <ListGroup className={"wd-assignment rounded-0"}>
                             <ListGroup.Item className={"wd-assign p-3 ps-1"}>
                                 <div className={"d-flex align-items-center"}>
@@ -41,7 +63,9 @@ export default function Assignments() {
                                         </a>
                                     </div>
                                     {isFaculty && <>
-                                        <AssignControl assignmentId={assignment._id} deleteAssignment={(assignmentId) => dispatch(deleteAssignment(assignmentId))}  />
+                                        <AssignControl assignmentId={assignment._id}
+                                                       deleteAssignment={(assignmentId) =>
+                                                           deleteAssignmentForCourse(assignmentId)}  />
                                     </>
                                     }
                                 </div>

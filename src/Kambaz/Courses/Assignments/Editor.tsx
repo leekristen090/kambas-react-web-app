@@ -13,6 +13,7 @@ import {Link, useNavigate, useParams} from "react-router";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addAssignment, updateAssignment} from "./reducer.ts";
+import * as assignmentsClient from "./client.ts";
 
 export default function AssignmentEditor() {
     const { cid, aid } = useParams();
@@ -21,7 +22,8 @@ export default function AssignmentEditor() {
     const { assignments } = useSelector((state: any) => state.assignmentReducer);
     const isNew = aid === "new";
     const [assignment, setAssignment] = useState({
-        _id: isNew ? '' : aid,
+        _id: "",
+        // isNew ? "" : aid
         title: "",
         course: cid || "",
         description: "",
@@ -30,44 +32,60 @@ export default function AssignmentEditor() {
         availableFromDate: "",
         availableUntilDate: ""
     });
-    useEffect(() => {
-        if (!isNew && aid) {
-            const existingAssignment = assignments.find((a: any) => a._id === aid);
-            if (existingAssignment) {
-                setAssignment({
-                    _id: existingAssignment._id,
-                    title: existingAssignment.title,
-                    course: existingAssignment.course,
-                    description: existingAssignment.description || "<p>This assignment is <span style='color: red'>available online</span></p>" +
-                        "<p>Submit a link to the landing page of your Web application running on Netlify.</p>" +
-                        "<p>The landing page should include the following:</p>" +
-                        "<ul><li>Your full name and section</li><li>Links to each of the lab assignments</li><li>Link to the Kambaz application</li><li>Link to all relevant source code repositories</li></ul>" +
-                        "<p>The Kambaz application should include a link to navigate back to the landing page.</p>",
-                    points: existingAssignment.points?.toString() || "100",
-                    dueDate: existingAssignment.dueDate || "",
-                    availableFromDate: existingAssignment.availableFromDate || "",
-                    availableUntilDate: existingAssignment.availableUntilDate || ""
-                });
-            }
-        }
-    }, [aid, isNew, assignments]);
 
-    const handleSave = () => {
+    const handleSave = async () => {
         const assignmentData = {
             ...assignment,
             points: parseInt(assignment.points) || 100
         };
-
-        if (isNew) {
-            dispatch(addAssignment(assignmentData));
-        } else {
-            dispatch(updateAssignment(assignmentData));
+        try {
+            if (isNew) {
+                const newAssignment = await assignmentsClient.createAssignmentForCourse(cid as string, assignmentData);
+                dispatch(addAssignment(newAssignment));
+            } else {
+                const updatedAssignment = await assignmentsClient.updateAssignmentForCourse(
+                    cid as string,
+                    assignment._id,
+                    assignmentData
+                );
+                dispatch(updateAssignment(updatedAssignment));
+            }
+            navigate(`/Kambaz/Courses/${cid}/Assignments`);
+        } catch (error) {
+            console.error("Failed to save assignment:", error);
         }
-        navigate(`/Kambaz/Courses/${cid}/Assignments`);
     };
     const handleCancel = () => {
         navigate(`/Kambaz/Courses/${cid}/Assignments`);
     };
+    useEffect(() => {
+        const fetchAssignment = async () => {
+            if (!isNew && aid) {
+                try {
+                    const existingAssignment = await assignmentsClient.findAssignmentById(cid as string, aid);
+                    if (existingAssignment) {
+                        setAssignment({
+                            _id: existingAssignment._id,
+                            title: existingAssignment.title,
+                            course: existingAssignment.course,
+                            description: existingAssignment.description || "<p>This assignment is <span style='color: red'>available online</span></p>" +
+                                "<p>Submit a link to the landing page of your Web application running on Netlify.</p>" +
+                                "<p>The landing page should include the following:</p>" +
+                                "<ul><li>Your full name and section</li><li>Links to each of the lab assignments</li><li>Link to the Kambaz application</li><li>Link to all relevant source code repositories</li></ul>" +
+                                "<p>The Kambaz application should include a link to navigate back to the landing page.</p>",
+                            points: existingAssignment.points?.toString() || "100",
+                            dueDate: existingAssignment.dueDate || "",
+                            availableFromDate: existingAssignment.availableFromDate || "",
+                            availableUntilDate: existingAssignment.availableUntilDate || ""
+                        });
+                    }
+                } catch (error) {
+                    console.error("Failed to fetch assignment:", error);
+                }
+            }
+        };
+        fetchAssignment();
+    }, [aid, isNew, cid]);
 
     if (!isNew && !assignments.find((a: any) => a._id === aid)) {
         return (

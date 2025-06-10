@@ -10,7 +10,7 @@ export default function AccountNavigation() {
             {links.map((link) => (
                 <div key={link}>
                     <Link to={`/Kambaz/Account/${link}`}
-                          className={pathname.includes(link) ? "active" : ""}>
+                          className={`btn btn-secondary mb-2 ${pathname.includes(link) ? "active" : ""}`}>
                         {link}
                     </Link>
                 </div>
