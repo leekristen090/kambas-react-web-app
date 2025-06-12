@@ -16,9 +16,9 @@ export default function CoursesNavigation() {
     ];
 
     return (
-        <ListGroup id={"wd-courses-navigations"} className="wd list-group fs-5 rounded-0">
+        <ListGroup id={"wd-courses-navigations"} className={"wd list-group fs-5 rounded-0"}>
             {links.map((link) =>(
-                <ListGroup.Item  key={link.path} as={Link} to={link.path}
+                <ListGroup.Item key={link.path} as={Link} to={link.path}
                                  className={`list-group-item border border-0 
                                  ${pathname.includes(link.label)  ? "active": "text-danger"}`}>
                     {link.label}
