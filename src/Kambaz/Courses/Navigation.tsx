@@ -20,7 +20,7 @@ export default function CoursesNavigation() {
             {links.map((link) =>(
                 <ListGroup.Item key={link.path} as={Link} to={link.path}
                                  className={`list-group-item border border-0 
-                                 ${pathname.includes(link.label)  ? "active": "text-danger"}`}>
+                                 ${pathname.includes(link.label) ? "active": "text-danger"}`}>
                     {link.label}
                 </ListGroup.Item>
             ))}
