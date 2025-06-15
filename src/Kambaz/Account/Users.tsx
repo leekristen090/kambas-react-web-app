@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import PeopleTable from "../Courses/People/Table.tsx";
 import * as client from "./client.ts";
+// import * as coursesClient from "../Courses/client.ts";
 import {FormControl} from "react-bootstrap";
 import {FaPlus} from "react-icons/fa6";
 

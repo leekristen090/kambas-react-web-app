@@ -1,3 +1,4 @@
+
 import {Routes, Route, Navigate} from "react-router-dom";
 import Account from "./Account";
 import Dashboard from "./Dashboard";
@@ -24,18 +25,47 @@ export default function Kambaz() {
         description: "New Description",
     });
     const {currentUser} = useSelector((state: any) => state.accountReducer);
+    // const fetchCourses = async () => {
+    //     try {
+    //         const courses = await courseClient.fetchAllCourses();
+    //         // const courses = await userClient.findMyCourses();
+    //         setCourses(courses);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
     const fetchCourses = async () => {
-      try {
-          const courses = await courseClient.fetchAllCourses();
-          // const courses = await userClient.findMyCourses();
-          setCourses(courses);
-      } catch (error) {
-          console.log(error);
-      }
+        try {
+            const allCourses = await courseClient.fetchAllCourses();
+            const enrolledCourses = await userClient.findCoursesForUser(
+                currentUser._id
+            );
+            // const courses = allCourses.map((course: any) => {
+            //     if (enrolledCourses.find((c: any) => c._id === course._id)) {
+            //         return { ...course, enrolled: true };
+            //     } else {
+            //         return course;
+            //     }
+            // });
+            const courses = allCourses.map((course: any) => {
+                const enrolled = enrolledCourses.some((c: any) => c._id === course._id);
+                return { ...course, enrolled };
+            });
+            setCourses(courses);
+        } catch (error) {
+            console.error(error);
+        }
     };
     useEffect(() => {
         fetchCourses();
     }, [currentUser]);
+    // useEffect(() => {
+    //     if (enrolling) {
+    //         fetchCourses();
+    //     } else {
+    //         findCoursesForUser();
+    //     }
+    // }, [currentUser, enrolling]);
     const addNewCourse = async () => {
         const newCourse = await userClient.createCourse(course);
         setCourses([...courses, newCourse]);

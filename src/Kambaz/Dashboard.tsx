@@ -5,7 +5,8 @@ import AuthCheck from "./Account/AuthCheck.tsx";
 import {useState} from "react";
 //import {addCourse, deleteCourse, updateCourse} from "./Courses/reducer.ts";
 import {enrollCourse, unenrollCourse} from "./Enrollments/reducer.ts";
-import * as enrollmentsClient from "./Enrollments/client.ts";
+// import * as enrollmentsClient from "./Enrollments/client.ts";
+import * as userClient from "../Kambaz/Account/client.ts";
 
 export default function Dashboard({courses, course, setCourse, addNewCourse, deleteCourse, updateCourse,}: {
     courses: any[];
@@ -41,11 +42,11 @@ export default function Dashboard({courses, course, setCourse, addNewCourse, del
     };
     const visibleCourses = showAll ? courses : courses.filter((course: any) => isEnrolled(course._id));
     const handleEnroll = async (courseId: string) => {
-        await enrollmentsClient.enrollUserInCourse(currentUser._id, courseId);
+        await userClient.enrollIntoCourse(currentUser._id, courseId);
         dispatch(enrollCourse({userId: currentUser._id, courseId}));
     };
     const handleUnenroll = async (courseId: string) => {
-        await enrollmentsClient.unenrollUserInCourse(currentUser._id, courseId);
+        await userClient.unenrollFromCourse(currentUser._id, courseId);
         dispatch(unenrollCourse({userId: currentUser._id, courseId}));
     };
 

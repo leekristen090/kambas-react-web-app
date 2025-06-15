@@ -7,13 +7,32 @@ import AssignmentEditor from "./Assignments/Editor.tsx";
 import {FaAlignJustify} from "react-icons/fa";
 import PeopleTable from "./People/Table.tsx";
 import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
 //import EnrollProtectedRoute from "../Enrollments/ProtectedRoute.tsx";
+import * as courseClient from "../Courses/client.ts";
 
 export default function Courses() {
     const { cid } = useParams();
     const {courses} = useSelector((state: any) => state.courseReducer);
     const course = courses.find((course: any) => course._id === cid);
     const { pathname } = useLocation();
+    //const dispatch = useDispatch();
+    const [people, setPeople] = useState<any[]>([]);
+    const findUsersForCourse = async (courseId: string) => {
+        try {
+            // console.log("Fetching users for course:", courseId);
+            const users = await courseClient.findUsersForCourse(courseId);
+            // console.log("People fetched:", users);
+            setPeople(users);
+        } catch (error) {
+            console.error("Error fetching users:", error);
+        }
+    }
+    useEffect(() => {
+        if (cid) {
+            findUsersForCourse(cid);
+        }
+    }, [cid]);
     return (
         <div id={"wd-courses"}>
             <h2 className={"text-danger"}>
@@ -39,7 +58,7 @@ export default function Courses() {
                         <Route path={"Zoom"} element={<h2>Zoom</h2>} />
                         <Route path={"Quizzes"} element={<h2>Quizzes</h2>} />
                         <Route path={"Grades"} element={<h2>Grades</h2>} />
-                        <Route path={"People"} element={<PeopleTable />} />
+                        <Route path={"People"} element={<PeopleTable users={people} />} />
                     </Routes>
                 </div>
             </div>

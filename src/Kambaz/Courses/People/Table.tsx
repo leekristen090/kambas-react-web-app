@@ -1,7 +1,7 @@
 import { Table} from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import PeopleDetails from "./Details.tsx";
-import {Link} from "react-router";
+import {Link} from "react-router-dom";
 // import {useParams} from "react-router";
 // import * as db from "../../Database";
 

@@ -20,7 +20,7 @@ export default function Assignments() {
     const {isFaculty} = AuthCheck();
     const dispatch = useDispatch();
     const fetchAssignments = async () => {
-        const assignments = await coursesClient.findAssignmentsForCourse(cid as string);
+        const assignments = await coursesClient.findAssignmentsForCourse(cid!);
         dispatch(setAssignments(assignments));
     };
     const deleteAssignmentForCourse = async (assignmentId: string) => {
