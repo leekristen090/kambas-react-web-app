@@ -27,29 +27,45 @@ export default function Kambaz() {
     const {currentUser} = useSelector((state: any) => state.accountReducer);
     // const fetchCourses = async () => {
     //     try {
-    //         const courses = await courseClient.fetchAllCourses();
-    //         // const courses = await userClient.findMyCourses();
+    //         const allCourses = await courseClient.fetchAllCourses();
+    //         const enrolledCourses = await userClient.findCoursesForUser(
+    //             currentUser._id
+    //         );
+    //         const courses = allCourses.map((course: any) => {
+    //             if (enrolledCourses.find((c: any) => c._id === course._id)) {
+    //                 return { ...course, enrolled: true };
+    //             } else {
+    //                 return course;
+    //             }
+    //         });
+    //         // const courses = allCourses.map((course: any) => {
+    //         //     const enrolled = enrolledCourses.some((c: any) => c._id === course._id);
+    //         //     return { ...course, enrolled };
+    //         // });
     //         setCourses(courses);
     //     } catch (error) {
-    //         console.log(error);
+    //         console.error(error);
     //     }
     // };
     const fetchCourses = async () => {
         try {
             const allCourses = await courseClient.fetchAllCourses();
+
+            // Check if currentUser exists
+            if (!currentUser) {
+                setCourses(allCourses); // Just show all courses without enrollment status
+                return;
+            }
+
             const enrolledCourses = await userClient.findCoursesForUser(
                 currentUser._id
             );
-            // const courses = allCourses.map((course: any) => {
-            //     if (enrolledCourses.find((c: any) => c._id === course._id)) {
-            //         return { ...course, enrolled: true };
-            //     } else {
-            //         return course;
-            //     }
-            // });
             const courses = allCourses.map((course: any) => {
-                const enrolled = enrolledCourses.some((c: any) => c._id === course._id);
-                return { ...course, enrolled };
+                if (enrolledCourses.find((c: any) => c._id === course._id)) {
+                    return { ...course, enrolled: true };
+                } else {
+                    return course;
+                }
             });
             setCourses(courses);
         } catch (error) {

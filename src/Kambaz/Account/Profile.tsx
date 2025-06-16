@@ -39,7 +39,10 @@ export default function Profile() {
             <FormControl defaultValue={profile.lastName} placeholder={"Last Name"} type={"text"}
                          id={"wd-last-name"} title={"Last Name"} className={"mb-2"}
                          onChange={(e) => setProfile({...profile, lastName: e.target.value})}/>
-            <FormControl defaultValue={profile.dob} type={"date"} id={"wd-dob"} title={"Date of Birth"}
+            <FormControl
+                // defaultValue={profile.dob}
+                defaultValue={profile.dob ? new Date(profile.dob).toISOString().split('T')[0] : ""}
+                type={"date"} id={"wd-dob"} title={"Date of Birth"}
             className={"mb-2"} onChange={(e) => setProfile({...profile, dob: e.target.value})}/>
             <FormControl defaultValue={profile.email} type={"email"} placeholder={"Email"}
                          id={"wd-email"} title={"Email Address"} className={"mb-2"}
