@@ -22,7 +22,7 @@ export default function PeopleDetails() {
     };
     const saveUser = async () => {
         const [firstName, lastName] = name.split(" ");
-        const updatedUser = {...user, firstName, lastName};
+        const updatedUser = { ...user, firstName, lastName };
         await client.updateUser(updatedUser);
         setUser(updatedUser);
         setEditing(false);
@@ -42,20 +42,21 @@ export default function PeopleDetails() {
             </div><hr />
             <div className={"text-danger fs-4"}>
                 {!editing && (
-                    <FaPencil onClick={() => setEditing(true)} className={"float-end fs-5 mt-2 wd-edit"} />
-                )}
+                    <FaPencil onClick={() => setEditing(true)}
+                              className="float-end fs-5 mt-2 wd-edit" /> )}
                 {editing && (
-                    <FaCheck onClick={() => saveUser()} className={"float-end fs-5 mt-2 wd-save"} />
-                )}
+                    <FaCheck onClick={() => saveUser()}
+                             className="float-end fs-5 mt-2 me-2 wd-save" /> )}
                 {!editing && (
-                    <div className={"wd-name"} onClick={() => setEditing(true)}>
-                        {user.firstName} {user.lastName}
-                    </div>
-                )}
+                    <div className="wd-name"
+                         onClick={() => setEditing(true)}>
+                        {user.firstName} {user.lastName}</div>)}
                 {user && editing && (
-                    <FormControl className={"w-50 wd-edit-name"} defaultValue={`${user.firstName} ${user.lastName}`}
+                    <FormControl className="w-50 wd-edit-name"
+                                 defaultValue={`${user.firstName} ${user.lastName}`}
                                  onChange={(e) => setName(e.target.value)}
-                                 onKeyDown={(e) => {if (e.key === "Enter") {saveUser();}}} />
+                                 onKeyDown={(e) => {
+                                     if (e.key === "Enter") { saveUser(); }}}/>
                 )}
             </div>
             <b>Roles: </b>
