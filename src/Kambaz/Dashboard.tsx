@@ -1,63 +1,74 @@
 import {Link, useNavigate} from "react-router";
 import {Button, Card, Col, FormControl, Row} from "react-bootstrap";
-import {useDispatch, useSelector} from "react-redux";
+//import {useDispatch, useSelector} from "react-redux";
 import AuthCheck from "./Account/AuthCheck.tsx";
-import {useState} from "react";
+//import {useState} from "react";
 //import {addCourse, deleteCourse, updateCourse} from "./Courses/reducer.ts";
-import {enrollCourse, unenrollCourse} from "./Enrollments/reducer.ts";
+//import {enrollCourse, unenrollCourse} from "./Enrollments/reducer.ts";
 // import * as enrollmentsClient from "./Enrollments/client.ts";
-import * as userClient from "../Kambaz/Account/client.ts";
+//import * as userClient from "../Kambaz/Account/client.ts";
 
-export default function Dashboard({courses, course, setCourse, addNewCourse, deleteCourse, updateCourse,}: {
+export default function Dashboard({courses, course, setCourse, addNewCourse, deleteCourse, updateCourse, enrolling, setEnrolling, updateEnrollment}: {
     courses: any[];
     course: any;
     setCourse: (course: any) => void;
     addNewCourse: () => void;
     deleteCourse: (id: string) => void;
-    updateCourse: (id: string) => void; }) {
-    const dispatch = useDispatch();
+    updateCourse: (id: string) => void;
+    enrolling: boolean;
+    setEnrolling: (enrolling: boolean) => void;
+    updateEnrollment: (courseId: string, enrolled: boolean) => void; }) {
+    //const dispatch = useDispatch();
     const navigate = useNavigate();
     // const {courses} = useSelector((state: any) => state.courseReducer);
-    const {currentUser} = useSelector((state: any) => state.accountReducer);
-    const {enrollments} = useSelector((state: any) => state.enrollmentReducer);
+    //const {currentUser} = useSelector((state: any) => state.accountReducer);
+    //const {enrollments} = useSelector((state: any) => state.enrollmentReducer);
     const {isFaculty} = AuthCheck();
     // const [course, setCourse] = useState<any>({
     //     _id: "0", name: "New Course", number: "New Number",
     //     startDate: "2023-09-10", endDate: "2023-12-15",
     //     image: "/images/reactjs.jpg", description: "New Description"
     // });
-    const [showAll, setShowAll] = useState(false);
-    const isEnrolled = (courseId: string) =>
-        enrollments.some(
-            (enrollment: any) =>
-                enrollment.user === currentUser._id &&
-                enrollment.course === courseId
-        );
+    //const [showAll, setShowAll] = useState(false);
+    // const isEnrolled = (courseId: string) =>
+    //     enrollments.some(
+    //         (enrollment: any) =>
+    //             enrollment.user === currentUser._id &&
+    //             enrollment.course === courseId
+    //     );
     const handleGoCLick = (courseId: string) => {
-        if (isEnrolled(courseId)) {
-            navigate(`/Kambaz/Courses/${courseId}/Home`)
-        } else {
-            alert("You must be enrolled in the course to access.")
-        }
+        // if (isEnrolled(courseId)) {
+        //     navigate(`/Kambaz/Courses/${courseId}/Home`)
+        // } else {
+        //     alert("You must be enrolled in the course to access.")
+        // }
+        if (course.enrolled) {
+            navigate(`/Kambaz/Courses/${courseId}/Home`)}
+        // } else {
+        //     alert("You must be enrolled in the course to access.")
+        // }
     };
-    const visibleCourses = showAll ? courses : courses.filter((course: any) => isEnrolled(course._id));
-    const handleEnroll = async (courseId: string) => {
-        await userClient.enrollIntoCourse(currentUser._id, courseId);
-        dispatch(enrollCourse({userId: currentUser._id, courseId}));
-    };
-    const handleUnenroll = async (courseId: string) => {
-        await userClient.unenrollFromCourse(currentUser._id, courseId);
-        dispatch(unenrollCourse({userId: currentUser._id, courseId}));
-    };
+    // const visibleCourses = showAll ? courses : courses.filter((course: any) => isEnrolled(course._id));
+    // const handleEnroll = async (courseId: string) => {
+    //     await userClient.enrollIntoCourse(currentUser._id, courseId);
+    //     dispatch(enrollCourse({userId: currentUser._id, courseId}));
+    // };
+    // const handleUnenroll = async (courseId: string) => {
+    //     await userClient.unenrollFromCourse(currentUser._id, courseId);
+    //     dispatch(unenrollCourse({userId: currentUser._id, courseId}));
+    // };
 
     return (
         <div id={"wd-dashboard"}>
             <h1 id={"wd-dashboard-title"}>
                 Dashboard
-                <Button variant={"primary"} className={"float-end btn-lg"}
-                        onClick={() => setShowAll(!showAll)}>
-                    Enrollments
-                </Button>
+                {/*<Button variant={"primary"} className={"float-end btn-lg"}*/}
+                {/*        onClick={() => setShowAll(!showAll)}>*/}
+                {/*    Enrollments*/}
+                {/*</Button>*/}
+                <button onClick={() => setEnrolling(!enrolling)} className={"float-end btn btn-primary"} >
+                    {enrolling ? "My Courses" : "All Courses"}
+                </button>
             </h1><hr/>
             {isFaculty &&
                 <>
@@ -84,12 +95,12 @@ export default function Dashboard({courses, course, setCourse, addNewCourse, del
                 </>
             }
             <h2 id={"wd-dashboard-published"}>
-                {showAll? "All Courses" : "My Courses"} ({visibleCourses.length})
+                {enrolling? "All Courses" : "My Courses"} ({courses.length})
             </h2><hr />
             <div id={"wd-dashboard-courses"}>
                 <Row xs={1} md={5} className={"g-4"}>
-                    {visibleCourses.map((course: any) => {
-                        const enrolled = isEnrolled(course._id);
+                    {courses.map((course: any) => {
+                        //const enrolled = isEnrolled(course._id);
                         return (
                             <Col className={"wd-dashboard-course"} style={{ width: "270px" }}>
                                 <Card>
@@ -128,26 +139,34 @@ export default function Dashboard({courses, course, setCourse, addNewCourse, del
                                                 </>
                                             }
                                             <div>
-                                                {enrolled ? (
-                                                    <Button variant={"danger"} className={"m-1 float-start"}
-                                                            onClick={async (e) => {
-                                                                e.preventDefault();
-                                                                e.stopPropagation();
-                                                                // dispatch(unenrollCourse({ userId: currentUser._id, courseId: course._id }));
-                                                                await handleUnenroll(course._id);
-                                                            }}>
-                                                        Unenroll
-                                                    </Button>
-                                                ) : (
-                                                    <Button variant={"success"} className={"m-1 float-start"}
-                                                            onClick={async (e) => {
-                                                                e.preventDefault();
-                                                                e.stopPropagation();
-                                                                // dispatch(enrollCourse({userId: currentUser._id, courseId: course._id}));
-                                                                await handleEnroll(course._id);
-                                                            }}>
-                                                        Enroll
-                                                    </Button>
+                                                {/*{enrolled ? (*/}
+                                                {/*    <Button variant={"danger"} className={"m-1 float-start"}*/}
+                                                {/*            onClick={async (e) => {*/}
+                                                {/*                e.preventDefault();*/}
+                                                {/*                e.stopPropagation();*/}
+                                                {/*                // dispatch(unenrollCourse({ userId: currentUser._id, courseId: course._id }));*/}
+                                                {/*                await handleUnenroll(course._id);*/}
+                                                {/*            }}>*/}
+                                                {/*        Unenroll*/}
+                                                {/*    </Button>*/}
+                                                {/*) : (*/}
+                                                {/*    <Button variant={"success"} className={"m-1 float-start"}*/}
+                                                {/*            onClick={async (e) => {*/}
+                                                {/*                e.preventDefault();*/}
+                                                {/*                e.stopPropagation();*/}
+                                                {/*                // dispatch(enrollCourse({userId: currentUser._id, courseId: course._id}));*/}
+                                                {/*                await handleEnroll(course._id);*/}
+                                                {/*            }}>*/}
+                                                {/*        Enroll*/}
+                                                {/*    </Button>*/}
+                                                {/*)}*/}
+                                                {enrolling && (
+                                                    <button className={`btn ${ course.enrolled ? "btn-danger" : "btn-success" } float-end`}
+                                                            onClick={(event) => {
+                                                        event.preventDefault();
+                                                        updateEnrollment(course._id, !course.enrolled);}}>
+                                                        {course.enrolled ? "Unenroll" : "Enroll"}
+                                                    </button>
                                                 )}
                                             </div>
                                         </Card.Body>
