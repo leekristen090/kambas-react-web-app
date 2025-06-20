@@ -100,7 +100,6 @@ export default function Dashboard({courses, course, setCourse, addNewCourse, del
             <div id={"wd-dashboard-courses"}>
                 <Row xs={1} md={5} className={"g-4"}>
                     {courses.map((course: any) => {
-                        //const enrolled = isEnrolled(course._id);
                         return (
                             <Col className={"wd-dashboard-course"} style={{ width: "270px" }}>
                                 <Card>
