@@ -59,7 +59,7 @@ export default function Users() {
             </h3>
             <FormControl onChange={(e) => filterUsersByName(e.target.value)}
                          placeholder={"Search People"} className={"float-start w-25 me-2"} id={"wd-filter-by-name"} />
-            <select value={role} onChange={(e) =>filterUsersByRole(e.target.value)}
+            <select value={role} onChange={(e) => filterUsersByRole(e.target.value)}
                     className="form-select float-start w-25 wd-select-role" >
                 <option value="">All Roles</option>    <option value="STUDENT">Students</option>
                 <option value="TA">Assistants</option> <option value="FACULTY">Faculty</option>
